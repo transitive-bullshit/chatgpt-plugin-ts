@@ -4,9 +4,11 @@ import { defineAIPluginManifest } from 'chatgpt-plugin'
 import * as routes from './routes'
 import pkg from '../package.json'
 import { getActions } from './actions'
+import { getSession } from './sessions'
 
 export interface Env {
   ANILIST_ACCESS_TOKEN: string
+  REDIS: string
   ENVIRONMENT: string
 }
 
@@ -20,6 +22,7 @@ const router = OpenAPIRouter({
 })
 
 router.get('/start', routes.StartGame)
+router.get('/continue', routes.ContinueGame)
 
 router.get('/.well-known/ai-plugin.json', (request: Request) => {
   const host = request.headers.get('host')
@@ -40,17 +43,23 @@ router.get('/.well-known/ai-plugin.json', (request: Request) => {
 })
 
 router.get(
-  '/actions/:id',
-  (request: Request, env: any, _ctx, data: Record<string, any>) => {
+  '/:gameId/actions/:id',
+  async (request: Request, env: any, _ctx, data: Record<string, any>) => {
     const host = request.headers.get('host')
     const id = request.url.split('/').pop()
+    const gameId = request.url.split('/')[3]
+    console.log(gameId)
 
     // const id = data.id
-    const actions = getActions(host)
+    const actions = getActions(host, gameId)
     const action = actions.find((a) => a.id === id)
     if (!action) {
       return new Response(`Action not found`, { status: 404 })
     }
+
+    console.log({ id, gameId })
+    const session = await getSession(gameId)
+    session.action = id
 
     const desc = action.description
     const title = action.name

@@ -1,7 +1,7 @@
-export const getActions = (host: string) => [
+export const getActions = (host: string, gameId: string) => [
   {
     id: '0',
-    actionUrl: `https://${host}/actions/${0}`,
+    actionUrl: `https://${host}/${gameId}/actions/${0}`,
     imageUrl: 'https://storage.googleapis.com/saasify-assets/c0.jpg',
     name: 'Go on a crazy adventure with Ed',
     description:
@@ -9,7 +9,7 @@ export const getActions = (host: string) => [
   },
   {
     id: '1',
-    actionUrl: `https://${host}/actions/${1}`,
+    actionUrl: `https://${host}/${gameId}/actions/${1}`,
     imageUrl: 'https://storage.googleapis.com/saasify-assets/c1.jpg',
     name: 'Visit a bar with Jet',
     description:

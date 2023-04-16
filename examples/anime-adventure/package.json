@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@cloudflare/itty-router-openapi": "^0.0.15",
+    "@upstash/redis": "^1.20.3",
     "anilist-node": "^1.13.2",
     "chatgpt-plugin": "workspace:../../packages/chatgpt-plugin",
     "nanoid": "^4.0.2",
