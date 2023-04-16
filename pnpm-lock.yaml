@@ -44,6 +44,21 @@ importers:
         specifier: ^2.14.0
         version: 2.14.0
 
+  examples/anime-adventure:
+    dependencies:
+      '@cloudflare/itty-router-openapi':
+        specifier: ^0.0.15
+        version: 0.0.15
+      anilist-node:
+        specifier: ^1.13.2
+        version: link:../../../../temp/anilist-node
+      chatgpt-plugin:
+        specifier: workspace:../../packages/chatgpt-plugin
+        version: link:../../packages/chatgpt-plugin
+      zod:
+        specifier: ^3.21.4
+        version: 3.21.4
+
   examples/ascii-art:
     dependencies:
       '@cloudflare/itty-router-openapi':
@@ -1404,7 +1419,7 @@ packages:
       '@octokit/request-error': 3.0.3
       '@octokit/types': 9.0.0
       is-plain-object: 5.0.0
-      node-fetch: 2.6.7
+      node-fetch: 2.6.9
       universal-user-agent: 6.0.0
     transitivePeerDependencies:
       - encoding
@@ -4568,6 +4583,18 @@ packages:
 
   /node-fetch@2.6.7:
     resolution: {integrity: sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==}
+    engines: {node: 4.x || >=6.0.0}
+    peerDependencies:
+      encoding: ^0.1.0
+    peerDependenciesMeta:
+      encoding:
+        optional: true
+    dependencies:
+      whatwg-url: 5.0.0
+    dev: true
+
+  /node-fetch@2.6.9:
+    resolution: {integrity: sha512-DJm/CJkZkRjKKj4Zi4BsKVZh3ValV5IR5s7LVZnW+6YMh0W1BfNA8XSs6DLMGYlId5F3KnA70uu2qepcR08Qqg==}
     engines: {node: 4.x || >=6.0.0}
     peerDependencies:
       encoding: ^0.1.0
