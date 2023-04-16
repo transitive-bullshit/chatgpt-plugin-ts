@@ -126,7 +126,7 @@ export class StartGame extends OpenAPIRoute {
     const actions = getActions(host, gameId)
 
     await addSession(gameId, {
-      anime,
+      anime: animeMetadata,
       actions
     })
 
