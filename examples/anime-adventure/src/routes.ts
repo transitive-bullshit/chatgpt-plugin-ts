@@ -1,14 +1,16 @@
 import { OpenAPIRoute, Query, Str } from '@cloudflare/itty-router-openapi'
 import Anilist from 'anilist-node'
+import { nanoid } from 'nanoid'
 
 // import { isValidChatGPTIPAddress } from 'chatgpt-plugin'
 import * as types from './types'
 import * as utils from './utils'
+import { getActions } from './actions'
 
 export class StartGame extends OpenAPIRoute {
   static schema = {
     summary:
-      'Starts a new game of Anime Adventure. The user must provide the name of an Anime that they want to base the game around. You should use the anime metadata that is returned to start a story set in the world of this anime.',
+      'Starts a new game of Anime Adventure. The user must provide the name of an Anime that they want to base the game around. You should use the anime metadata that is returned to start a story set in the world of this anime. It also returns "actions" which are very important. Your story should focus on giving the user the option to choose between the given actions in order to continue the story. The user will click on a given "actionUrl" and future invocations of this ',
     parameters: {
       anime: Query(
         new Str({
@@ -23,6 +25,19 @@ export class StartGame extends OpenAPIRoute {
     responses: {
       '200': {
         schema: {
+          actions: [
+            {
+              id: new Str(),
+              actionUrl: new Str({
+                description: 'URL of the action to perform'
+              }),
+              imageUrl: new Str({
+                description: 'Image preview of the action'
+              }),
+              name: new Str({ description: 'Name of the action to perform' }),
+              description: new Str()
+            }
+          ],
           anime: {
             id: new Str(),
             title: new Str({
@@ -54,6 +69,7 @@ export class StartGame extends OpenAPIRoute {
       return new Response('ANILIST_ACCESS_TOKEN not set', { status: 500 })
     }
 
+    const host = request.headers.get('host')
     const ip = request.headers.get('Cf-Connecting-Ip')
     if (!ip) {
       console.warn('search error missing IP address')
@@ -102,14 +118,19 @@ export class StartGame extends OpenAPIRoute {
         .map((review) => utils.pick(review, 'summary', 'body'))
     }
 
+    const actions = getActions(host)
+
     console.log()
     console.log()
     console.log('<<< search', `${query} (${openaiUserLocaleInfo}, ${ip})`)
 
-    return new Response(JSON.stringify({ anime: animeMetadata }, null, 2), {
-      headers: {
-        'content-type': 'application/json;charset=UTF-8'
+    return new Response(
+      JSON.stringify({ anime: animeMetadata, actions }, null, 2),
+      {
+        headers: {
+          'content-type': 'application/json;charset=UTF-8'
+        }
       }
-    })
+    )
   }
 }

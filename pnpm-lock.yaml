@@ -55,6 +55,9 @@ importers:
       chatgpt-plugin:
         specifier: workspace:../../packages/chatgpt-plugin
         version: link:../../packages/chatgpt-plugin
+      nanoid:
+        specifier: ^4.0.2
+        version: 4.0.2
       zod:
         specifier: ^3.21.4
         version: 3.21.4
@@ -4563,6 +4566,12 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
     dev: true
+
+  /nanoid@4.0.2:
+    resolution: {integrity: sha512-7ZtY5KTCNheRGfEFxnedV5zFiORN1+Y1N6zvPTnHQd8ENUvfaDBeuJDZb2bN/oXwXxu3qkTXDzy57W5vAmDTBw==}
+    engines: {node: ^14 || ^16 || >=18}
+    hasBin: true
+    dev: false
 
   /negotiator@0.6.3:
     resolution: {integrity: sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg==}
