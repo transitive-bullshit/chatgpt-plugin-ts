@@ -43,7 +43,9 @@ router.get(
   '/actions/:id',
   (request: Request, env: any, _ctx, data: Record<string, any>) => {
     const host = request.headers.get('host')
-    const id = data.id
+    const id = request.url.split('/').pop()
+
+    // const id = data.id
     const actions = getActions(host)
     const action = actions.find((a) => a.id === id)
     if (!action) {
@@ -77,6 +79,10 @@ router.get(
           justify-content: center;
           align-items: center;
           min-height: 100vh;
+        }
+        img {
+          width: 100%;
+          max-width: 800px;
         }
       </style>
   </head>
