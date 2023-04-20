@@ -1,0 +1,6 @@
+name = "chatgpt-plugin-anime-adventure"
+main = "src/index.ts"
+compatibility_date = "2023-04-04"
+
+[vars]
+ANILIST_ACCESS_TOKEN="TODO"

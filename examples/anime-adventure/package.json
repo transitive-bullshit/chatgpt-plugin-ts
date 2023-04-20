@@ -1,0 +1,41 @@
+{
+  "name": "chatgpt-plugin-example-anime-adventure",
+  "version": "0.1.2",
+  "private": true,
+  "description": "A neverending choose-your-own-adventure Anime game.",
+  "author": "Travis Fischer <travis@transitivebullsh.it>",
+  "repository": "transitive-bullshit/chatgpt-plugin-ts",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=14"
+  },
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler publish"
+  },
+  "dependencies": {
+    "@cloudflare/itty-router-openapi": "^0.0.15",
+    "@upstash/redis": "^1.20.3",
+    "anilist-node": "^1.13.2",
+    "chatgpt-plugin": "workspace:../../packages/chatgpt-plugin",
+    "nanoid": "^4.0.2",
+    "zod": "^3.21.4"
+  },
+  "aiPlugin": {
+    "name": "Anime Adventure",
+    "description_for_model": "Plugin which enables the user to play a neverending choose-your-own-adventure Anime game. Use this plugin to generate a story about an anime of the user's choosing. The game starts with the \"start\" command, and the user can then use the \"continue\" command to continue the story. The user can also use the \"restart\" command to start a new story.",
+    "logo_url": "TODO",
+    "contact_email": "travis@transitivebullsh.it",
+    "legal_info_url": "https://transitivebullsh.it"
+  },
+  "keywords": [
+    "openai",
+    "chatgpt",
+    "plugin",
+    "openapi",
+    "anime",
+    "game",
+    "choose your own adventure"
+  ]
+}
