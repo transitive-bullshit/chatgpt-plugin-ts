@@ -1,0 +1,12 @@
+name = "chatgpt-plugin-talk-to-books"
+main = "src/index.ts"
+compatibility_date = "2023-04-04"
+
+[vars]
+vars = { SEARCH_API_BASE_URL="TODO", ENVIRONMENT="dev" }
+
+[env.staging]
+vars = { SEARCH_API_BASE_URL="TODO", ENVIRONMENT = "staging" }
+
+[env.production]
+vars = { SEARCH_API_BASE_URL="TODO", ENVIRONMENT = "production" }

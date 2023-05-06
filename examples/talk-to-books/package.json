@@ -1,0 +1,41 @@
+{
+  "name": "chatgpt-plugin-example-talk-to-books",
+  "version": "0.1.2",
+  "private": true,
+  "description": "Search across the book Lessons of History, by Will and Ariel Durant.",
+  "author": "Travis Fischer <travis@transitivebullsh.it>",
+  "repository": "transitive-bullshit/chatgpt-plugin-ts",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=14"
+  },
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler publish"
+  },
+  "dependencies": {
+    "@cloudflare/itty-router-openapi": "^0.0.15",
+    "chatgpt-plugin": "workspace:../../packages/chatgpt-plugin",
+    "zod": "^3.21.4"
+  },
+  "aiPlugin": {
+    "name": "Talk to Books",
+    "description_for_model": "Plugin for searching the contents of the book The Lessons of History, by Will and Ariel Durant. Use it to search for quotes and passages from the book for the following topics: history, men and women, evolutionary psychology, the possibilities and limitations of humanity, human rights, and social reform. The book's synopiss reads: A concise survey of the culture and civilization of mankind, The Lessons of History is the result of a lifetime of research from Pulitzer Prize–winning historians Will and Ariel Durant.",
+    "logo_url": "https://www.sloww.co/wp-content/uploads/2019/09/Sloww-Durant-The-Lessons-Of-History-Book-Summary.jpg",
+    "contact_email": "travis@transitivebullsh.it",
+    "legal_info_url": "https://transitivebullsh.it"
+  },
+  "keywords": [
+    "openai",
+    "chatgpt",
+    "plugin",
+    "openapi",
+    "books",
+    "lessons",
+    "history",
+    "evolutionary",
+    "psychology",
+    "psych"
+  ]
+}
