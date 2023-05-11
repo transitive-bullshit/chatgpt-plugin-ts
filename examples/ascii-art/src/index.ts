@@ -14,7 +14,7 @@ const router = OpenAPIRouter({
 
 router.get('/render', routes.ASCIIArtRender)
 
-router.get('/.well-known/ai-plugin.json', (request: Request) => {
+router.original.get('/.well-known/ai-plugin.json', (request: Request) => {
   const host = request.headers.get('host')
   const pluginManifest = defineAIPluginManifest({
     schema_version: 'v1',

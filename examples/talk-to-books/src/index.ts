@@ -20,7 +20,7 @@ const router = OpenAPIRouter({
 
 router.get('/search', routes.BookSearch)
 
-router.get('/.well-known/ai-plugin.json', (request: Request) => {
+router.original.get('/.well-known/ai-plugin.json', (request: Request) => {
   const host = request.headers.get('host')
   const pluginManifest = defineAIPluginManifest(
     {

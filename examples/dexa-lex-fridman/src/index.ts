@@ -19,7 +19,7 @@ const router = OpenAPIRouter({
 
 router.get('/search', routes.DexaSearch)
 
-router.get('/.well-known/ai-plugin.json', (request: Request) => {
+router.original.get('/.well-known/ai-plugin.json', (request: Request) => {
   const host = request.headers.get('host')
   const pluginManifest = defineAIPluginManifest(
     {
